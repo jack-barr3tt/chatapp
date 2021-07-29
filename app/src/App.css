@@ -1,0 +1,262 @@
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto'),
+         url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap') format('woff2'),
+}
+
+:root{
+    --spacing: 40px;
+    --bkg-color: rgb(224, 224, 224);
+    --fcs-color: white;
+    --text-color: white;
+    --title-text-color: black;
+    --sent-msg-color: rgb(0, 152, 255);
+    --rec-msg-color: rgb(224, 224, 224);
+    --input-color: rgb(168, 168, 168);
+    --button-regular: rgb(6, 178, 0);
+    --button-hover: rgb(8, 214, 0);
+    --button-down: rgb(6, 158, 0);
+    --error-text-color: rgb(190, 0, 0);
+}
+
+body {
+    font-family: 'Roboto';
+    background-color: var(--bkg-color);
+}
+
+body, #root, .Main {
+    width: 100%;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    height: fit-content;
+}
+
+.Main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+*:focus {
+    outline: none;
+}
+
+textarea:focus{
+    outline: none;
+}
+
+div.Title {
+    color: var(--title-text-color);
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.Auth {
+    background-color: var(--fcs-color);
+    padding: var(--spacing);
+}
+
+.Room {
+    background-color: var(--fcs-color);
+    position: absolute;
+    align-self: center;
+    bottom: calc(2 * var(--spacing));
+    overflow-y: scroll;
+}
+
+form.chat {
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+    height: calc(2 * var(--spacing));
+    justify-content: center;
+    align-items: center;
+    background-color: var(--fcs-color);
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+}
+
+ul, li {
+    text-align: left;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+li {
+    margin-top: calc(var(--spacing) / 2);
+}
+
+p.sentMessage, p.receivedMessage, input, button {
+    font-size: 1rem;
+    border-radius: calc(var(--spacing) / 2);
+}
+
+.sentMessage, .receivedMessage {
+    width: fit-content;
+    margin-bottom: 0;
+}
+
+p.sentMessage, p.receivedMessage {
+    padding: calc(var(--spacing) / 4);
+}
+
+p.sentMessage {
+    background-color: var(--sent-msg-color);
+    color: var(--text-color);
+}
+
+p.receivedMessage {
+    background-color: var(--rec-msg-color);
+    color: var(--title-text-color);
+}
+
+.sentBy, .recFrom {
+    color: var(--input-color);
+    text-align: center;
+    height: auto;
+}
+
+button, input {
+    height: calc(var(--spacing) / 2);
+    border: none;
+}
+
+input, .SendButton{
+    padding: calc(var(--spacing) / 4);
+}
+
+input {
+    background-color: var(--input-color);
+    color: var(--text-color);
+    height: calc(var(--spacing) / 2);
+}
+
+button {
+    background-color: var(--button-regular);
+    color: var(--text-color);
+    width: 100px;
+    height: var(--spacing);
+}
+
+button:hover {
+    background-color: var(--button-hover); 
+}
+
+button:active {
+    background-color: var(--button-down);
+}
+
+.Auth {
+    justify-self: center;
+    align-self: center;
+    max-width: 600px;
+}
+
+form.AuthEntry {
+    display: flex;
+    flex-direction: column;
+}
+
+input.AuthEntry, button.AuthEntry {
+    margin: calc(var(--spacing) / 2) var(--spacing);
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.AuthButtons, button.AuthEntry {
+    width: 200px;
+}
+
+.AuthButtons {
+    margin-top: var(--spacing);
+}
+
+button.AuthEntry {
+    align-self: center;
+}
+
+.resStatus {
+    color: var(--error-text-color);
+    align-self: center;
+}
+
+.HideSignOut {
+    display: none;
+}
+
+.SignOut {
+    position: fixed;
+}
+
+@media screen and (max-width: 650px) {
+    /* Small screens */
+    .Room, .Auth {
+        width: 100%;
+        height: calc(100% - (100px + 2 * var(--spacing)));
+    }
+
+    .sentMessage, .sentBy { 
+        margin-left: calc(var(--spacing) / 4);
+    }
+
+    .receivedMessage, .recFrom {
+        margin-right: calc(var(--spacing) / 4);
+        align-self: flex-end;
+    }
+
+    .MessageInput {
+        width: calc(100% - (100px + 2 * var(--spacing)));
+        margin-right: calc(var(--spacing) / 2);
+    }
+
+    .SignOut {
+        right: calc(var(--spacing) / 2);
+    }
+}
+
+@media screen and (min-width: 650px) {
+    /* Big screens */
+    .Room, .Auth {
+        width: 75%;
+        height: calc(100% - (100px + 2.5 * var(--spacing)));
+    }
+
+    .Room {
+        padding-top: calc(var(--spacing) / 2);
+    }
+
+    .sentMessage, .sentBy { 
+        margin-left: calc(var(--spacing) / 2);
+    }
+
+    .receivedMessage, .recFrom {
+        margin-right: calc(var(--spacing) / 2);
+        align-self: flex-end;
+    }
+
+    .MessageInput {
+        width: calc(100% - (100px + 3 * var(--spacing)));
+        margin-right: var(--spacing);
+    }
+
+    .SignOut {
+        right: 12.5%;
+    }
+}
